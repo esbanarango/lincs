@@ -16,6 +16,14 @@ Bundler.require(*Rails.groups)
 module Api
   class Application < Rails::Application
 
+    # CORS. F CORS.
+    config.middleware.use Rack::Cors do
+      allow do
+        origins "*"
+        resource "*", headers: :any, methods: [:get, :post, :put, :delete, :options]
+      end
+    end
+
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
       g.test_framework :rspec, fixture: true

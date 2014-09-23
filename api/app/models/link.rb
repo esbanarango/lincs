@@ -16,4 +16,8 @@
 #
 
 class Link < ActiveRecord::Base
+
+	validates :url, uniqueness: true
+  validates :name, :source, presence: true
+
 end
